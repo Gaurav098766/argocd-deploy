@@ -6,7 +6,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Gaurav098766/argocd-deploy.git
-    path: k8s
+    path: infra/k8s
     targetRevision: HEAD
     helm:
       valueFiles:
