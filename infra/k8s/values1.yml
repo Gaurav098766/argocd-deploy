@@ -10,7 +10,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values.yaml
+        - depl-srv.yml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
