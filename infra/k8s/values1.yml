@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: webapp-argo
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Gaurav098766/argocd-deploy.git
+    path: k8s
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
