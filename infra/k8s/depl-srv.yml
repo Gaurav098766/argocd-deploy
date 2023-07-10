@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp
+  name: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - image: 369893511316.dkr.ecr.ap-south-1.amazonaws.com/micro:latest
+        name: webapp
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+  labels:
+    run: webapp
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+  selector:
+    app: webapp
+  type: LoadBalancer
